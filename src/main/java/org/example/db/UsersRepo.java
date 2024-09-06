@@ -1,6 +1,7 @@
 package org.example.db;
 
 import lombok.Getter;
+import org.example.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
