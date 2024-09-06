@@ -43,12 +43,6 @@ The task is to design and implement a reservation management system for a car re
 #### User and Reservation Management
 - Implement functionalities for adding, searching, and managing cars and users. Enable creation and management of reservations.
 
-#### Testing
-- Write unit and integration tests to verify the correctness of the system. Tests should cover all major functionalities and check the correct implementation of design patterns.
-
-#### Documentation
-- Prepare technical documentation describing the design patterns used, SOLID principles, and good coding practices. Explain how each requirement was implemented and what patterns were used.
-
 ## Objective
 The task aims to assess your skills in:
 - Designing a system according to design patterns.
