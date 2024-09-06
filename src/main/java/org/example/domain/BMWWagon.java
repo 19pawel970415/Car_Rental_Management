@@ -1,5 +1,10 @@
 package org.example.domain;
 
 public class BMWWagon extends BMW {
-    private CargoCovers cargoCovers;
+    private CargoCover cargoCover;
+
+    public BMWWagon(BMWModel model, CargoCover cargoCover) {
+        super(model);
+        this.cargoCover = cargoCover;
+    }
 }

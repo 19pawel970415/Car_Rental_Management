@@ -1,6 +1,6 @@
 package org.example.domain;
 
-public enum CargoCovers {
+public enum CargoCover {
     HARD,
     SOFT,
     RETRACTABLE;

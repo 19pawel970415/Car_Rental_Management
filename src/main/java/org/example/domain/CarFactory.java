@@ -1,7 +1,7 @@
 package org.example.domain;
 
 public interface CarFactory {
-    Car createSedan();
-    Car createHatchback();
-    Car createWagon();
+    Car createSedan(Model model, TrunkDivider trunkDivider);
+    Car createHatchback(Model model, FoldingRearSeatsConfig foldingRearSeatsConfig);
+    Car createWagon(Model model, CargoCover cargoCover);
 }
