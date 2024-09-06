@@ -7,7 +7,7 @@ import org.example.db.ReservationsRepo;
 import java.util.Arrays;
 import java.util.List;
 
-public class ReservationGenerator {
+public class ReservationsGenerator {
 
     private static final List<Market> MARKETS = MarketsRepo.getInstance().getMarkets();
     private static final List<Car> CARS = CarsRepo.getInstance().getCars();

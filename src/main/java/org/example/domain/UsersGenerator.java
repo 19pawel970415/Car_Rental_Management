@@ -6,7 +6,7 @@ import org.example.db.UsersRepo;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserGenerator {
+public class UsersGenerator {
 
     private static final List<Reservation> RESERVATIONS = ReservationsRepo.getInstance().getReservations();
 

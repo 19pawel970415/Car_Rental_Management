@@ -22,5 +22,6 @@ public class ReservationsRepo {
         if (RESERVATIONS_REPO_INSTANCE == null) {
             RESERVATIONS_REPO_INSTANCE = new ReservationsRepo(new ArrayList<>());
         }
+        return RESERVATIONS_REPO_INSTANCE;
     }
 }
