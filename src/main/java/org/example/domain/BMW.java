@@ -1,5 +1,8 @@
 package org.example.domain;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class BMW extends Car {
-    private String model;
+    private BMWModel model;
 }
