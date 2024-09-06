@@ -1,0 +1,21 @@
+package org.example.domain;
+
+public enum Bundesland {
+    BADEN_WUERTTEMBERG,
+    BAVARIA,
+    BERLIN,
+    BRANDENBURG,
+    BREMEN,
+    HAMBURG,
+    HESSE,
+    MECKLENBURG_VORPOMMERN,
+    LOWER_SAXONY,
+    NORTH_RHINE_WESTPHALIA,
+    RHEINLAND_PALATINATE,
+    SAARLAND,
+    SAXONY,
+    SAXONY_ANHALT,
+    SCHLESWIG_HOLSTEIN,
+    THURINGIA;
+}
+
