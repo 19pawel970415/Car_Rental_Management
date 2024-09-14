@@ -1,11 +1,13 @@
 package org.example.db;
 
+import lombok.Getter;
 import lombok.Setter;
 import org.example.domain.Payment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Setter
 public class PaymentsRepo {
     private List<Payment> payments;
