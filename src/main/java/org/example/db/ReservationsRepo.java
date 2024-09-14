@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Setter
-@Getter
 public class ReservationsRepo {
     private List<Reservation> reservations;
 
