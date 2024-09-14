@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Setter
-@Getter
 public class CarsRepo {
     private List<Car> cars;
 
