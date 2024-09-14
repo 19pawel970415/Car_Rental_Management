@@ -1,24 +1,22 @@
 package org.example;
 
-import org.example.domain.CarsGenerator;
-import org.example.domain.MarketsGenerator;
-import org.example.domain.ReservationsGenerator;
-import org.example.domain.UsersGenerator;
+import org.example.db.PaymentsRepo;
+import org.example.domain.*;
 
 public class Main {
+
+    public static final PaymentsRepo PAYMENTS_REPO_INSTANCE = PaymentsRepo.getInstance();
+    public static final ExternalPaymentAdapter EXTERNAL_PAYMENT_ADAPTER_INSTANCE = ExternalPaymentAdapter.getInstance();
+
     public static void main(String[] args) {
         CarsGenerator.generateCars();
         MarketsGenerator.generateMarkets();
         ReservationsGenerator.generateReservations();
         UsersGenerator.generateUsers();
-        //TODO
-        /*
-        Expand the existing car reservation management system by implementing the Adapter pattern
-        to integrate with a new external library for the payment system.
-        Create a PaymentProcessor interface, which will have a method processPayment(Order order).
-        Then, create a class ExternalPaymentSystem, which has its own payment methods,
-        but their signatures differ from your interface.
-        Create an adapter, ExternalPaymentAdapter, which will adapt the external payment system to your interface.
-         */
+        PaymentsGenerator.generatePayments();
+
+        for (Payment payment : PAYMENTS_REPO_INSTANCE.getPayments()) {
+            EXTERNAL_PAYMENT_ADAPTER_INSTANCE.processPayment(payment);
+        }
     }
 }

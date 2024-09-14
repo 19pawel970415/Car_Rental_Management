@@ -6,11 +6,11 @@ import org.example.db.ReservationsRepo;
 import java.util.Arrays;
 import java.util.List;
 
-public class PaymentGenerator {
+public class PaymentsGenerator {
 
     private static final List<Reservation> RESERVATIONS = ReservationsRepo.getInstance().getReservations();
 
-    void generatePayments() {
+    public static void generatePayments() {
 
         Payment payment = new Payment(RESERVATIONS.get(0), PaymentStatus.TO_PAY);
         Payment payment1 = new Payment(RESERVATIONS.get(1), PaymentStatus.TO_PAY);
