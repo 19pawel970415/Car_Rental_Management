@@ -12,12 +12,12 @@ public class PaymentGenerator {
 
     void generatePayments() {
 
-        Payment payment = new Payment(RESERVATIONS.get(0));
-        Payment payment1 = new Payment(RESERVATIONS.get(1));
-        Payment payment2 = new Payment(RESERVATIONS.get(2));
-        Payment payment3 = new Payment(RESERVATIONS.get(3));
-        Payment payment4 = new Payment(RESERVATIONS.get(4));
-        Payment payment5 = new Payment(RESERVATIONS.get(5));
+        Payment payment = new Payment(RESERVATIONS.get(0), PaymentStatus.TO_PAY);
+        Payment payment1 = new Payment(RESERVATIONS.get(1), PaymentStatus.TO_PAY);
+        Payment payment2 = new Payment(RESERVATIONS.get(2), PaymentStatus.TO_PAY);
+        Payment payment3 = new Payment(RESERVATIONS.get(3), PaymentStatus.TO_PAY);
+        Payment payment4 = new Payment(RESERVATIONS.get(4), PaymentStatus.TO_PAY);
+        Payment payment5 = new Payment(RESERVATIONS.get(5), PaymentStatus.TO_PAY);
 
         PaymentsRepo.getInstance().setPayments(
                 Arrays.asList(

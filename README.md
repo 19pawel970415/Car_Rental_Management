@@ -18,6 +18,10 @@ The goal is to design and implement a reservation management system for a car re
 2. **Builder:** Use the Builder pattern for creating complex `User` and `Reservation` objects.
 3. **Factory Method:** Apply the Factory Method pattern for creating different types of Markets.
 4. **Abstract Factory:** Use the Abstract Factory pattern to manage car factories and their products for different brands.
+5. **Adapter:** Implement the Adapter pattern to integrate with a new external library for the payment system:
+    - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
+    - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
+    - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
 
 #### Good Practices
 1. **Clean Code:** Ensure code readability by applying the Single Responsibility Principle (SRP) and using meaningful names.
@@ -37,6 +41,10 @@ The goal is to design and implement a reservation management system for a car re
 2. **Builder:** Create users using Builder pattern.
 3. **Factory Method:** Create `MarketFactory` interfaces and concrete implementations.
 4. **Abstract Factory:** Use an Abstract Factory pattern for managing groups of car factories.
+5. **Adapter:** Implement the Adapter pattern to integrate with a new external library for the payment system:
+    - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
+    - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
+    - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
 
 ### Interfaces and Implementations
 1. **Interfaces:** Define interfaces for `Car`, `User`, `Reservation`, and `Market`.
