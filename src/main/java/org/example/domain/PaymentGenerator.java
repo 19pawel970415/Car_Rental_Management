@@ -1,5 +1,6 @@
 package org.example.domain;
 
+import org.example.db.PaymentsRepo;
 import org.example.db.ReservationsRepo;
 
 import java.util.Arrays;
@@ -18,7 +19,7 @@ public class PaymentGenerator {
         Payment payment4 = new Payment(RESERVATIONS.get(4));
         Payment payment5 = new Payment(RESERVATIONS.get(5));
 
-        PaymentRepo.getInstance().setReservations(
+        PaymentsRepo.getInstance().setPayments(
                 Arrays.asList(
                         payment,
                         payment1,
