@@ -7,6 +7,7 @@ import org.example.domain.User;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Setter
 public class UsersRepo {
     List<User> users;
