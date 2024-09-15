@@ -19,19 +19,23 @@ The goal is to design and implement a reservation management system for a car re
 3. **Factory Method:** Apply the Factory Method pattern for creating different types of Markets.
 4. **Abstract Factory:** Use the Abstract Factory pattern to manage car factories and their products for different brands.
 5. **Adapter:** Implement the Adapter pattern to integrate with a new external library for the payment system:
-   - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
-   - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
-   - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
+    - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
+    - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
+    - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
 6. **Decorator:** Implement the Decorator pattern to enrich information about rented cars:
-   - **CarInfoProvider Interface:** Extend the `Car` class by implementing the `CarInfoProvider` interface.
-   - **CarInsuranceDecorator:** Create a decorator that adds information about the car's insurance.
-   - **GPSDecorator:** Create a decorator that adds information about whether the car has a GPS system.
+    - **CarInfoProvider Interface:** Extend the `Car` class by implementing the `CarInfoProvider` interface.
+    - **CarInsuranceDecorator:** Create a decorator that adds information about the car's insurance.
+    - **GPSDecorator:** Create a decorator that adds information about whether the car has a GPS system.
 7. **Facade:** Implement the Facade pattern to simplify the reservation management process:
-   - **ReservationProcessFacade:** Create a class `ReservationProcessFacade` that coordinates the reservation process by interacting with the following components:
-      - **CarAvailabilityService:** For checking car availability.
-      - **ExternalPaymentAdapter:** For handling payments.
-      - **ReservationConfirmation:** For confirming reservations.
-   - **Interface:** The `ReservationProcessFacade` class should have a method `reserve(Car car, Payment payment)`.
+    - **ReservationProcessFacade:** Create a class `ReservationProcessFacade` that coordinates the reservation process by interacting with the following components:
+        - **CarAvailabilityService:** For checking car availability.
+        - **ExternalPaymentAdapter:** For handling payments.
+        - **ReservationConfirmation:** For confirming reservations.
+    - **Interface:** The `ReservationProcessFacade` class should have a method `reserve(Car car, Payment payment)`.
+8. **Proxy:** Implement the Proxy pattern for user authorization:
+    - **ReservationServiceProxy:** Implement a class `ReservationServiceProxy` that acts as a proxy for `ReservationService`.
+        - **Interface:** `ReservationServiceProxy` should implement the `ReservationService` interface.
+        - **Logic:** Add logic to check user authorization before executing the `isAuthorized` method. Users from Germany have restricted access to foreign markets.
 
 #### Good Practices
 1. **Clean Code:** Ensure code readability by applying the Single Responsibility Principle (SRP) and using meaningful names.
@@ -52,19 +56,23 @@ The goal is to design and implement a reservation management system for a car re
 3. **Factory Method:** Create `MarketFactory` interfaces and concrete implementations.
 4. **Abstract Factory:** Use an Abstract Factory pattern for managing groups of car factories.
 5. **Adapter:** Implement the Adapter pattern to integrate with a new external library for the payment system:
-   - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
-   - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
-   - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
+    - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
+    - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
+    - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
 6. **Decorator:** Implement the Decorator pattern to enrich information about rented cars:
-   - **CarInfoProvider Interface:** Extend the `Car` class by implementing the `CarInfoProvider` interface.
-   - **CarInsuranceDecorator:** Create a decorator that adds information about the car's insurance.
-   - **GPSDecorator:** Create a decorator that adds information about whether the car has a GPS system.
+    - **CarInfoProvider Interface:** Extend the `Car` class by implementing the `CarInfoProvider` interface.
+    - **CarInsuranceDecorator:** Create a decorator that adds information about the car's insurance.
+    - **GPSDecorator:** Create a decorator that adds information about whether the car has a GPS system.
 7. **Facade:** Implement the Facade pattern to simplify the reservation management process:
-   - **ReservationProcessFacade:** Create a class `ReservationProcessFacade` that coordinates the reservation process by interacting with the following components:
-      - **CarAvailabilityService:** For checking car availability.
-      - **ExternalPaymentAdapter:** For handling payments.
-      - **ReservationConfirmation:** For confirming reservations.
-   - **Interface:** The `ReservationProcessFacade` class should have a method `reserve(Car car, Payment payment)`.
+    - **ReservationProcessFacade:** Create a class `ReservationProcessFacade` that coordinates the reservation process by interacting with the following components:
+        - **CarAvailabilityService:** For checking car availability.
+        - **ExternalPaymentAdapter:** For handling payments.
+        - **ReservationConfirmation:** For confirming reservations.
+    - **Interface:** The `ReservationProcessFacade` class should have a method `reserve(Car car, Payment payment)`.
+8. **Proxy:** Implement the Proxy pattern for user authorization:
+    - **ReservationServiceProxy:** Implement the `ReservationServiceProxy` class, which acts as a proxy for `ReservationService`.
+        - **Interface:** `ReservationServiceProxy` should implement the `ReservationService` interface.
+        - **Logic:** Add logic to check user authorization before executing the `isAuthorized` method. Users from Germany have restricted access to foreign markets.
 
 ### Interfaces and Implementations
 1. **Interfaces:** Define interfaces for `Car`, `User`, `Reservation`, and `Market`.

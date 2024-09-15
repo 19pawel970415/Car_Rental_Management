@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.db.CarsRepo;
 import org.example.db.PaymentsRepo;
+import org.example.db.UsersRepo;
 import org.example.domain.*;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 public class Main {
 
     public static final PaymentsRepo PAYMENTS_REPO_INSTANCE = PaymentsRepo.getInstance();
+    public static final UsersRepo USERS_REPO_INSTANCE = UsersRepo.getInstance();
     public static final ExternalPaymentAdapter EXTERNAL_PAYMENT_ADAPTER_INSTANCE = ExternalPaymentAdapter.getInstance();
     public static final CarAvailabilityService CAR_AVAILABILITY_SERVICE_INSTANCE = CarAvailabilityService.getInstance();
     public static final ReservationConfirmationService RESERVATION_CONFIRMATION_SERVICE_INSTANCE = ReservationConfirmationService.getInstance();
@@ -69,5 +71,9 @@ public class Main {
         );
 
         reservationProcessFacade.reserve(cars.get(0), PAYMENTS_REPO_INSTANCE.getPayments().get(0));
+
+        ReservationServiceProxy service = new ReservationServiceProxy();
+        boolean isAuthorized = service.isAuthorized(USERS_REPO_INSTANCE.getUsers().get(2));
+        System.out.println("User authorized: " + isAuthorized);
     }
 }
