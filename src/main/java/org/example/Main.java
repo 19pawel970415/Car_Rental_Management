@@ -10,6 +10,8 @@ public class Main {
 
     public static final PaymentsRepo PAYMENTS_REPO_INSTANCE = PaymentsRepo.getInstance();
     public static final ExternalPaymentAdapter EXTERNAL_PAYMENT_ADAPTER_INSTANCE = ExternalPaymentAdapter.getInstance();
+    public static final CarAvailabilityService CAR_AVAILABILITY_SERVICE_INSTANCE = CarAvailabilityService.getInstance();
+    public static final ReservationConfirmationService RESERVATION_CONFIRMATION_SERVICE_INSTANCE = ReservationConfirmationService.getInstance();
 
     public static void main(String[] args) {
         CarsGenerator.generateCars();
@@ -59,5 +61,13 @@ public class Main {
 
         CarInfoProvider carFullInfo = new CarInsuranceDecorator(new CarGPSDecorator(car));
         System.out.println(carFullInfo.getCarInfo());
+
+        ReservationProcessFacade reservationProcessFacade = new ReservationProcessFacade(
+                CAR_AVAILABILITY_SERVICE_INSTANCE,
+                EXTERNAL_PAYMENT_ADAPTER_INSTANCE,
+                RESERVATION_CONFIRMATION_SERVICE_INSTANCE
+        );
+
+        reservationProcessFacade.reserve(cars.get(0), PAYMENTS_REPO_INSTANCE.getPayments().get(0));
     }
 }

@@ -26,6 +26,12 @@ The goal is to design and implement a reservation management system for a car re
    - **CarInfoProvider Interface:** Extend the `Car` class by implementing the `CarInfoProvider` interface.
    - **CarInsuranceDecorator:** Create a decorator that adds information about the car's insurance.
    - **GPSDecorator:** Create a decorator that adds information about whether the car has a GPS system.
+7. **Facade:** Implement the Facade pattern to simplify the reservation management process:
+   - **ReservationProcessFacade:** Create a class `ReservationProcessFacade` that coordinates the reservation process by interacting with the following components:
+      - **CarAvailabilityService:** For checking car availability.
+      - **ExternalPaymentAdapter:** For handling payments.
+      - **ReservationConfirmation:** For confirming reservations.
+   - **Interface:** The `ReservationProcessFacade` class should have a method `reserve(Car car, Payment payment)`.
 
 #### Good Practices
 1. **Clean Code:** Ensure code readability by applying the Single Responsibility Principle (SRP) and using meaningful names.
@@ -53,6 +59,12 @@ The goal is to design and implement a reservation management system for a car re
    - **CarInfoProvider Interface:** Extend the `Car` class by implementing the `CarInfoProvider` interface.
    - **CarInsuranceDecorator:** Create a decorator that adds information about the car's insurance.
    - **GPSDecorator:** Create a decorator that adds information about whether the car has a GPS system.
+7. **Facade:** Implement the Facade pattern to simplify the reservation management process:
+   - **ReservationProcessFacade:** Create a class `ReservationProcessFacade` that coordinates the reservation process by interacting with the following components:
+      - **CarAvailabilityService:** For checking car availability.
+      - **ExternalPaymentAdapter:** For handling payments.
+      - **ReservationConfirmation:** For confirming reservations.
+   - **Interface:** The `ReservationProcessFacade` class should have a method `reserve(Car car, Payment payment)`.
 
 ### Interfaces and Implementations
 1. **Interfaces:** Define interfaces for `Car`, `User`, `Reservation`, and `Market`.
