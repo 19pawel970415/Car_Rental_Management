@@ -17,20 +17,20 @@ public class ReservationsGenerator {
         reservation.setMarket(MARKETS.get(0));
         reservation.setCar(CARS.get(0));
         Reservation reservation1 = new Reservation();
-        reservation.setMarket(MARKETS.get(1));
-        reservation.setCar(CARS.get(1));
+        reservation1.setMarket(MARKETS.get(1));
+        reservation1.setCar(CARS.get(1));
         Reservation reservation2 = new Reservation();
-        reservation.setMarket(MARKETS.get(2));
-        reservation.setCar(CARS.get(2));
+        reservation2.setMarket(MARKETS.get(2));
+        reservation2.setCar(CARS.get(2));
         Reservation reservation3 = new Reservation();
-        reservation.setMarket(MARKETS.get(3));
-        reservation.setCar(CARS.get(3));
+        reservation3.setMarket(MARKETS.get(3));
+        reservation3.setCar(CARS.get(3));
         Reservation reservation4 = new Reservation();
-        reservation.setMarket(MARKETS.get(0));
-        reservation.setCar(CARS.get(4));
+        reservation4.setMarket(MARKETS.get(0));
+        reservation4.setCar(CARS.get(4));
         Reservation reservation5 = new Reservation();
-        reservation.setMarket(MARKETS.get(1));
-        reservation.setCar(CARS.get(5));
+        reservation5.setMarket(MARKETS.get(1));
+        reservation5.setCar(CARS.get(5));
 
         ReservationsRepo.getInstance().setReservations(
                 Arrays.asList(
