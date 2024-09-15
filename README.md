@@ -19,9 +19,13 @@ The goal is to design and implement a reservation management system for a car re
 3. **Factory Method:** Apply the Factory Method pattern for creating different types of Markets.
 4. **Abstract Factory:** Use the Abstract Factory pattern to manage car factories and their products for different brands.
 5. **Adapter:** Implement the Adapter pattern to integrate with a new external library for the payment system:
-    - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
-    - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
-    - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
+   - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
+   - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
+   - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
+6. **Decorator:** Implement the Decorator pattern to enrich information about rented cars:
+   - **CarInfoProvider Interface:** Extend the `Car` class by implementing the `CarInfoProvider` interface.
+   - **CarInsuranceDecorator:** Create a decorator that adds information about the car's insurance.
+   - **GPSDecorator:** Create a decorator that adds information about whether the car has a GPS system.
 
 #### Good Practices
 1. **Clean Code:** Ensure code readability by applying the Single Responsibility Principle (SRP) and using meaningful names.
@@ -42,9 +46,13 @@ The goal is to design and implement a reservation management system for a car re
 3. **Factory Method:** Create `MarketFactory` interfaces and concrete implementations.
 4. **Abstract Factory:** Use an Abstract Factory pattern for managing groups of car factories.
 5. **Adapter:** Implement the Adapter pattern to integrate with a new external library for the payment system:
-    - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
-    - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
-    - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
+   - **PaymentService Interface:** Create a `PaymentService` interface with a method `processPayment(Order order)`.
+   - **ExternalPaymentSystem:** Create a class `ExternalPaymentSystem` with its own payment methods, differing from your `PaymentService` interface.
+   - **ExternalPaymentAdapter:** Create an `ExternalPaymentAdapter` class to adapt the `ExternalPaymentSystem` to the `PaymentService` interface.
+6. **Decorator:** Implement the Decorator pattern to enrich information about rented cars:
+   - **CarInfoProvider Interface:** Extend the `Car` class by implementing the `CarInfoProvider` interface.
+   - **CarInsuranceDecorator:** Create a decorator that adds information about the car's insurance.
+   - **GPSDecorator:** Create a decorator that adds information about whether the car has a GPS system.
 
 ### Interfaces and Implementations
 1. **Interfaces:** Define interfaces for `Car`, `User`, `Reservation`, and `Market`.
@@ -54,7 +62,7 @@ The goal is to design and implement a reservation management system for a car re
 1. **Repositories:** Implement repositories for managing cars, markets, reservations, and users, ensuring they follow the Singleton pattern for instance management.
 
 ### Main Class
-1. **Main Class:** Implement the `Main` class to run methods for generating cars, markets, reservations, and users, demonstrating how the various components work together.
+1. **Main Class:** Implement the `Main` class to run methods for generating cars, markets, reservations, and users, and demonstrate the dynamic wrapping of `Car` objects using decorators.
 
 ## Objective
 The task aims to assess your skills in:
