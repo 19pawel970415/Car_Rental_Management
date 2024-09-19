@@ -5,6 +5,12 @@ import java.util.stream.Collectors;
 
 public class ReservationServiceProxy implements ReservationService {
 
+    private static ReservationServiceProxy RESERVATION_SERVICE_PROXY_INSTANCE = new ReservationServiceProxy();
+
+    public static ReservationServiceProxy getInstance() {
+        return RESERVATION_SERVICE_PROXY_INSTANCE;
+    }
+
     @Override
     public boolean isAuthorized(User user) {
         if (user.getCountry().equals(Country.GERMANY)) {
