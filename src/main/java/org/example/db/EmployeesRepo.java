@@ -131,7 +131,7 @@ public class EmployeesRepo implements Iterable<Employee>, List<Employee> {
             if (!c.contains(employees[i])) {
                 remove(i);
                 modified = true;
-                i--; // Adjust index after removal
+                i--;
             }
         }
         return modified;
