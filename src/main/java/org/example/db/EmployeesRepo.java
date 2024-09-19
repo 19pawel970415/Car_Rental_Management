@@ -284,7 +284,7 @@ public class EmployeesRepo implements Iterable<Employee>, List<Employee> {
 
         @Override
         public boolean hasNext() {
-            return idx < employees.length && employees[idx] != null;
+            return idx < size && employees[idx] != null;
         }
 
         @Override
