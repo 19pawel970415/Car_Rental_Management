@@ -1,30 +1,14 @@
 package org.example.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+public abstract class Employee {
+    private GroupChat groupChat;
 
-import java.util.Objects;
-
-@AllArgsConstructor
-@Getter
-public class Employee {
-    private String name;
-    private String surname;
-    private String email;
-    private String login;
-    private String password;
-    private EmployeeType employeeType;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Objects.equals(login, employee.login);
+    Employee(GroupChat groupChat) {
+        this.groupChat = groupChat;
+        groupChat.subscribeToGroupChat(this);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(login);
-    }
+    void sendMessage(String message) {}
+
+    void handleMessage(String message) {}
 }
