@@ -9,8 +9,14 @@ public class EmployeesRepo implements Iterable<Employee>, List<Employee> {
     private int size = 0;
     private static final int DEFAULT_CAPACITY = 10;
 
-    public EmployeesRepo() {
+    private EmployeesRepo() {
         this.employees = new Employee[DEFAULT_CAPACITY];
+    }
+
+    private static EmployeesRepo employeesRepo = new EmployeesRepo();
+
+    public EmployeesRepo getInstance() {
+        return employeesRepo;
     }
 
     private void ensureCapacity() {
