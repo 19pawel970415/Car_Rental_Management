@@ -1,7 +1,9 @@
 package org.example.domain;
 
+import java.util.Optional;
+
 public interface ReservationState {
-    ReservationState previousState() throws NullPointerException;
-    ReservationState nextState() throws NullPointerException;
+    Optional<ReservationState> previousState();
+    Optional<ReservationState> nextState();
     void getStateInfo();
 }

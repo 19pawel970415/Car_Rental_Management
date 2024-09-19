@@ -1,15 +1,17 @@
 package org.example.domain;
 
+import java.util.Optional;
+
 public class PaidReservation implements ReservationState {
     @Override
-    public ReservationState previousState() throws NullPointerException {
-        return new ToBePaidReservation();
+    public Optional<ReservationState> previousState() {
+        return Optional.of(new ToBePaidReservation());
     }
 
     @Override
-    public ReservationState nextState() throws NullPointerException {
+    public Optional<ReservationState> nextState() {
         System.out.println("There is no next state for paid reservation");
-        return null;
+        return Optional.empty();
     }
 
     @Override
