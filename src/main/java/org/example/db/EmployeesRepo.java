@@ -13,10 +13,10 @@ public class EmployeesRepo implements Iterable<Employee>, List<Employee> {
         this.employees = new Employee[DEFAULT_CAPACITY];
     }
 
-    private static EmployeesRepo employeesRepo = new EmployeesRepo();
+    private static EmployeesRepo EMPLOYEES_REPO_INSTANCE = new EmployeesRepo();
 
-    public EmployeesRepo getInstance() {
-        return employeesRepo;
+    public static EmployeesRepo getInstance() {
+        return EMPLOYEES_REPO_INSTANCE;
     }
 
     private void ensureCapacity() {
@@ -45,7 +45,7 @@ public class EmployeesRepo implements Iterable<Employee>, List<Employee> {
     }
 
     @Override
-    public Object[] toArray() {
+    public Employee[] toArray() {
         return Arrays.copyOf(employees, size);
     }
 
