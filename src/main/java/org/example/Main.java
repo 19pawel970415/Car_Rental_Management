@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.db.CarsRepo;
-import org.example.db.EmployeesRepo;
-import org.example.db.PaymentsRepo;
-import org.example.db.UsersRepo;
+import org.example.db.*;
 import org.example.domain.*;
 
 import java.util.Iterator;
@@ -18,6 +15,7 @@ public class Main {
     private static final ReservationConfirmationService RESERVATION_CONFIRMATION_SERVICE_INSTANCE = ReservationConfirmationService.getInstance();
     private static final EmployeesRepo EMPLOYEES_REPO_INSTANCE = EmployeesRepo.getInstance();
     private static final GroupChat GROUP_CHAT_INSTANCE = GroupChat.getInstance();
+    private static final ReservationsRepo RESERVATION_REPO_INSTANCE = ReservationsRepo.getInstance();
 
     public static void main(String[] args) {
         CarsGenerator.generateCars();
@@ -26,6 +24,7 @@ public class Main {
         UsersGenerator.generateUsers();
         PaymentsGenerator.generatePayments();
         EmployeesGenerator.generateEmployees();
+        ReservationService reservationService = new ReservationServiceProxy();
 
         for (Payment payment : PAYMENTS_REPO_INSTANCE.getPayments()) {
             EXTERNAL_PAYMENT_ADAPTER_INSTANCE.processPayment(payment);
@@ -97,5 +96,24 @@ public class Main {
             }
         }
 
+        for (Reservation reservation : RESERVATION_REPO_INSTANCE.getReservations()) {
+            reservationService.transit(reservation);
+        }
+
+        RESERVATION_REPO_INSTANCE.getReservations().stream()
+                .map(Reservation::getReservationState)
+                .forEach(ReservationState::getStateInfo);
+
+        for (Reservation reservation : RESERVATION_REPO_INSTANCE.getReservations()) {
+            if (reservation.getMarket() instanceof DomesticMarket) {
+                reservationService.transit(reservation);
+            }
+        }
+
+        RESERVATION_REPO_INSTANCE.getReservations().stream()
+                .map(Reservation::getReservationState)
+                .forEach(ReservationState::getStateInfo);
+
+        reservationService.transit(RESERVATION_REPO_INSTANCE.getReservations().get(3));
     }
 }
