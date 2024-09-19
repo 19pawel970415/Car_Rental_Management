@@ -13,22 +13,22 @@ public class ReservationsGenerator {
     private static final List<Car> CARS = CarsRepo.getInstance().getCars();
 
     public static void generateReservations() {
-        Reservation reservation = new Reservation();
+        Reservation reservation = new Reservation(new NewReservation());
         reservation.setMarket(MARKETS.get(0));
         reservation.setCar(CARS.get(0));
-        Reservation reservation1 = new Reservation();
+        Reservation reservation1 = new Reservation(new NewReservation());
         reservation1.setMarket(MARKETS.get(1));
         reservation1.setCar(CARS.get(1));
-        Reservation reservation2 = new Reservation();
+        Reservation reservation2 = new Reservation(new NewReservation());
         reservation2.setMarket(MARKETS.get(2));
         reservation2.setCar(CARS.get(2));
-        Reservation reservation3 = new Reservation();
+        Reservation reservation3 = new Reservation(new NewReservation());
         reservation3.setMarket(MARKETS.get(3));
         reservation3.setCar(CARS.get(3));
-        Reservation reservation4 = new Reservation();
+        Reservation reservation4 = new Reservation(new NewReservation());
         reservation4.setMarket(MARKETS.get(0));
         reservation4.setCar(CARS.get(4));
-        Reservation reservation5 = new Reservation();
+        Reservation reservation5 = new Reservation(new NewReservation());
         reservation5.setMarket(MARKETS.get(1));
         reservation5.setCar(CARS.get(5));
 
