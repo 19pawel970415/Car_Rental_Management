@@ -11,12 +11,13 @@ import java.util.List;
 
 public class Main {
 
-    public static final PaymentsRepo PAYMENTS_REPO_INSTANCE = PaymentsRepo.getInstance();
-    public static final UsersRepo USERS_REPO_INSTANCE = UsersRepo.getInstance();
-    public static final ExternalPaymentAdapter EXTERNAL_PAYMENT_ADAPTER_INSTANCE = ExternalPaymentAdapter.getInstance();
-    public static final CarAvailabilityService CAR_AVAILABILITY_SERVICE_INSTANCE = CarAvailabilityService.getInstance();
-    public static final ReservationConfirmationService RESERVATION_CONFIRMATION_SERVICE_INSTANCE = ReservationConfirmationService.getInstance();
-    public static final EmployeesRepo EMPLOYEES_REPO_INSTANCE = EmployeesRepo.getInstance();
+    private static final PaymentsRepo PAYMENTS_REPO_INSTANCE = PaymentsRepo.getInstance();
+    private static final UsersRepo USERS_REPO_INSTANCE = UsersRepo.getInstance();
+    private static final ExternalPaymentAdapter EXTERNAL_PAYMENT_ADAPTER_INSTANCE = ExternalPaymentAdapter.getInstance();
+    private static final CarAvailabilityService CAR_AVAILABILITY_SERVICE_INSTANCE = CarAvailabilityService.getInstance();
+    private static final ReservationConfirmationService RESERVATION_CONFIRMATION_SERVICE_INSTANCE = ReservationConfirmationService.getInstance();
+    private static final EmployeesRepo EMPLOYEES_REPO_INSTANCE = EmployeesRepo.getInstance();
+    private static final GroupChat GROUP_CHAT_INSTANCE = GroupChat.getInstance();
 
     public static void main(String[] args) {
         CarsGenerator.generateCars();
@@ -84,7 +85,15 @@ public class Main {
 
         for (Employee employee : EMPLOYEES_REPO_INSTANCE) {
             if (iterator.hasNext()) {
-                System.out.println(iterator.next().getLogin());
+                if (employee instanceof Manager) {
+                    String message = "Hi team!";
+                    Manager empl = (Manager) employee;
+                    GROUP_CHAT_INSTANCE.sendMessage(empl, message);
+                } else {
+                    String message = "Hi manager!";
+                    RentalRepresentative empl = (RentalRepresentative) employee;
+                    GROUP_CHAT_INSTANCE.sendMessage(empl, message);
+                }
             }
         }
 
