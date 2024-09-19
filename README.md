@@ -33,9 +33,13 @@ The goal is to design and implement a reservation management system for a car re
         - **ReservationConfirmation:** For confirming reservations.
     - **Interface:** The `ReservationProcessFacade` class should have a method `reserve(Car car, Payment payment)`.
 8. **Proxy:** Implement the Proxy pattern for user authorization:
-    - **ReservationServiceProxy:** Implement a class `ReservationServiceProxy` that acts as a proxy for `ReservationService`.
+    - **ReservationServiceProxy:** Implement the `ReservationServiceProxy` class, which acts as a proxy for `ReservationService`.
         - **Interface:** `ReservationServiceProxy` should implement the `ReservationService` interface.
         - **Logic:** Add logic to check user authorization before executing the `isAuthorized` method. Users from Germany have restricted access to foreign markets.
+9. **Iterator:** Implement the Iterator pattern for employee iteration:
+    - **EmployeeIterator:** Implement the `EmployeeIterator` class, which provides iteration functionality for the `EmployeesRepo` class.
+        - **Interface:** `EmployeeIterator` implements the `Iterator<Employee>` interface.
+        - **Logic:** Ensure iteration through the employees array in the `EmployeesRepo` class. The iterator supports standard iteration methods: `hasNext()` to check if there are more elements, and `next()` to retrieve the next employee. The implementation provides a way to traverse through the collection without exposing the underlying data structure.
 
 #### Good Practices
 1. **Clean Code:** Ensure code readability by applying the Single Responsibility Principle (SRP) and using meaningful names.
@@ -73,6 +77,10 @@ The goal is to design and implement a reservation management system for a car re
     - **ReservationServiceProxy:** Implement the `ReservationServiceProxy` class, which acts as a proxy for `ReservationService`.
         - **Interface:** `ReservationServiceProxy` should implement the `ReservationService` interface.
         - **Logic:** Add logic to check user authorization before executing the `isAuthorized` method. Users from Germany have restricted access to foreign markets.
+9. **Iterator:** Implement the Iterator pattern for employee iteration:
+    - **EmployeeIterator:** Implement the `EmployeeIterator` class, which provides iteration functionality for the `EmployeesRepo` class.
+        - **Interface:** `EmployeeIterator` implements the `Iterator<Employee>` interface.
+        - **Logic:** Ensure iteration through the employees array in the `EmployeesRepo` class. The iterator supports standard iteration methods: `hasNext()` to check if there are more elements, and `next()` to retrieve the next employee. The implementation provides a way to traverse through the collection without exposing the underlying data structure.
 
 ### Interfaces and Implementations
 1. **Interfaces:** Define interfaces for `Car`, `User`, `Reservation`, and `Market`.
