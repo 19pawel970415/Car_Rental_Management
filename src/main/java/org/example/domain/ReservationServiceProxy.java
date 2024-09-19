@@ -5,8 +5,6 @@ import java.util.stream.Collectors;
 
 public class ReservationServiceProxy implements ReservationService {
 
-
-
     @Override
     public boolean isAuthorized(User user) {
         if (user.getCountry().equals(Country.GERMANY)) {
@@ -22,6 +20,15 @@ public class ReservationServiceProxy implements ReservationService {
             }
         } else {
             return true;
+        }
+    }
+
+    @Override
+    public void transit(Reservation reservation) {
+        if (!(reservation.getReservationState() instanceof PaidReservation)) {
+            reservation.setReservationState(reservation.getReservationState().nextState().get());
+        } else {
+            throw new IllegalStateException("PaidReservation cannot transition to another state");
         }
     }
 }

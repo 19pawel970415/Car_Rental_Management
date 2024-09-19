@@ -5,15 +5,16 @@ import java.util.Optional;
 public class NewReservation implements ReservationState {
 
     @Override
-    public ReservationState previousState() {
+    public Optional<ReservationState> previousState() {
         System.out.println("No previous state for new reservation");
-        return null;
+        return Optional.empty();
     }
 
     @Override
-    public ReservationState nextState() {
-        return new ToBePaidReservation();
+    public Optional<ReservationState> nextState() {
+        return Optional.of(new ToBePaidReservation());
     }
+
 
     @Override
     public void getStateInfo() {
