@@ -16,6 +16,7 @@ public class Main {
     private static final EmployeesRepo EMPLOYEES_REPO_INSTANCE = EmployeesRepo.getInstance();
     private static final GroupChat GROUP_CHAT_INSTANCE = GroupChat.getInstance();
     private static final ReservationsRepo RESERVATION_REPO_INSTANCE = ReservationsRepo.getInstance();
+    private static final ReservationServiceProxy RESERVATION_SERVICE_INSTANCE = ReservationServiceProxy.getInstance();
 
     public static void main(String[] args) {
         CarsGenerator.generateCars();
@@ -24,7 +25,11 @@ public class Main {
         UsersGenerator.generateUsers();
         PaymentsGenerator.generatePayments();
         EmployeesGenerator.generateEmployees();
-        ReservationService reservationService = new ReservationServiceProxy();
+
+        PaymentMethod paymentMethod = new CashPayment();
+        PaymentMethod paymentMethod1 = new CreditCardPayment();
+        PaymentMethod paymentMethod2 = new BlikPayment();
+        PaymentMethod paymentMethod3 = new BitcoinPayment();
 
         for (Payment payment : PAYMENTS_REPO_INSTANCE.getPayments()) {
             EXTERNAL_PAYMENT_ADAPTER_INSTANCE.processPayment(payment);
@@ -96,24 +101,29 @@ public class Main {
             }
         }
 
-        for (Reservation reservation : RESERVATION_REPO_INSTANCE.getReservations()) {
-            reservationService.transit(reservation);
-        }
+        List<Reservation> reservations = RESERVATION_REPO_INSTANCE.getReservations();
 
-        RESERVATION_REPO_INSTANCE.getReservations().stream()
+        reservations.stream()
                 .map(Reservation::getReservationState)
                 .forEach(ReservationState::getStateInfo);
 
-        for (Reservation reservation : RESERVATION_REPO_INSTANCE.getReservations()) {
-            if (reservation.getMarket() instanceof DomesticMarket) {
-                reservationService.transit(reservation);
-            }
+        for (Reservation reservation : reservations) {
+            RESERVATION_SERVICE_INSTANCE.transit(reservation);
         }
 
-        RESERVATION_REPO_INSTANCE.getReservations().stream()
+        reservations.stream()
                 .map(Reservation::getReservationState)
                 .forEach(ReservationState::getStateInfo);
 
-        reservationService.transit(RESERVATION_REPO_INSTANCE.getReservations().get(3));
+        paymentMethod1.processPayment(reservations.get(0), 100);
+        paymentMethod2.processPayment(reservations.get(1), 150);
+        paymentMethod3.processPayment(reservations.get(2), 200);
+        paymentMethod.processPayment(reservations.get(3), 250);
+        paymentMethod2.processPayment(reservations.get(4), 300);
+        paymentMethod3.processPayment(reservations.get(5), 350);
+
+        reservations.stream()
+                .map(Reservation::getReservationState)
+                .forEach(ReservationState::getStateInfo);
     }
 }
