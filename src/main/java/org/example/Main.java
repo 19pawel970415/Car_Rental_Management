@@ -1,10 +1,12 @@
 package org.example;
 
 import org.example.db.CarsRepo;
+import org.example.db.EmployeesRepo;
 import org.example.db.PaymentsRepo;
 import org.example.db.UsersRepo;
 import org.example.domain.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Main {
@@ -14,6 +16,7 @@ public class Main {
     public static final ExternalPaymentAdapter EXTERNAL_PAYMENT_ADAPTER_INSTANCE = ExternalPaymentAdapter.getInstance();
     public static final CarAvailabilityService CAR_AVAILABILITY_SERVICE_INSTANCE = CarAvailabilityService.getInstance();
     public static final ReservationConfirmationService RESERVATION_CONFIRMATION_SERVICE_INSTANCE = ReservationConfirmationService.getInstance();
+    public static final EmployeesRepo EMPLOYEES_REPO_INSTANCE = EmployeesRepo.getInstance();
 
     public static void main(String[] args) {
         CarsGenerator.generateCars();
@@ -21,6 +24,7 @@ public class Main {
         ReservationsGenerator.generateReservations();
         UsersGenerator.generateUsers();
         PaymentsGenerator.generatePayments();
+        EmployeesGenerator.generateEmployees();
 
         for (Payment payment : PAYMENTS_REPO_INSTANCE.getPayments()) {
             EXTERNAL_PAYMENT_ADAPTER_INSTANCE.processPayment(payment);
@@ -75,5 +79,14 @@ public class Main {
         ReservationServiceProxy service = new ReservationServiceProxy();
         boolean isAuthorized = service.isAuthorized(USERS_REPO_INSTANCE.getUsers().get(2));
         System.out.println("User authorized: " + isAuthorized);
+
+        Iterator<Employee> iterator = EMPLOYEES_REPO_INSTANCE.iterator();
+
+        for (Employee employee : EMPLOYEES_REPO_INSTANCE) {
+            if (iterator.hasNext()) {
+                System.out.println(iterator.next().getLogin());
+            }
+        }
+
     }
 }
